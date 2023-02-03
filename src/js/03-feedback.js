@@ -7,6 +7,8 @@ const form = document.querySelector('.feedback-form');
 const message = document.querySelector('textarea[name="message"]');
 const email = document.querySelector('input[name="email"]');
 
+// alert on submit
+
 // add event listeners
 
 form.addEventListener(
@@ -19,6 +21,13 @@ form.addEventListener(
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+  const inputData = {
+    email: form.elements.email.value,
+    message: form.elements.message.value,
+  };
+  if (inputData.email === '' || inputData.message === '') {
+    alert('Please fill all fileds');
+  }
   console.log({ email: email.value, message: message.value });
   form.reset();
   localStorage.removeItem(LOCALSTORAGE_KEY);
